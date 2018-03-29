@@ -1,1 +1,1 @@
-This is my portfolio containing mostly already built programs made with Unity game engine.
+This is my portfolio containing mostly programs made with Unity

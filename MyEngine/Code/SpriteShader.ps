@@ -1,0 +1,13 @@
+Texture2DArray textures : register(t1);
+SamplerState texSampler : register(s0);
+
+struct psInput
+{
+    float4 pos : SV_POSITION;
+    float3 uv : TEXCOORD;
+};
+
+float4 PSMain(psInput v) : SV_TARGET {
+    return textures.Sample(texSampler, v.uv);
+
+}
