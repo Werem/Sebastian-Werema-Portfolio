@@ -1,0 +1,19 @@
+Texture2DArray textures : register(t0);
+SamplerState texSampler : register(s0);
+
+struct psInput
+{
+    float4 pos : SV_POSITION;
+    float4 color : COLOR;
+    float2 uv : TEXCOORD;
+};
+
+float4 PSMain(psInput v) : SV_TARGET {
+    //return v.color * lerp(textures.Sample(texSampler, float3(v.uv, 0.0f)), textures.Sample(texSampler, float3(v.uv, 1.0f)), v.uv.x);
+	if(v.uv.x < 0.5f){
+		return textures.Sample(texSampler, float3(v.uv * 100.0f, 0.0f));
+	} else {
+		return textures.Sample(texSampler, float3(v.uv * 100.0f, 1.0f));
+	}
+    //return textures.Sample(texSampler, float3(v.uv * 100.0f, 0.0f));
+}
